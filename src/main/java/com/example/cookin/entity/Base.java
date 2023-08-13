@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
 @Getter
-public class BaseEntity {
+public class Base {
     // 생성되었을 때 시간을 만들어주는 것.
     @CreationTimestamp
     // 수정 시에 관여하지 않겠다.
