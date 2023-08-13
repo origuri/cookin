@@ -7,7 +7,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @Getter
-public class bizInfo {
+public class BizInfo {
 
     private String bizName; // 사업장 이름.
     private String bizId;   // 사업자 등록번호

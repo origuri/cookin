@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "order_item")
-public class OrderItem {
+public class OrderItem extends Base {
 
     @Id @GeneratedValue
     private Long orderItemId;

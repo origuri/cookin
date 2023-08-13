@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Item {
+public class Item extends Base {
 
     @Id @GeneratedValue
     private Long itemId;

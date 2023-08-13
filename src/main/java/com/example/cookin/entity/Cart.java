@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Cart {
+public class Cart extends Base {
 
     @Id @GeneratedValue
     private Long cartId;

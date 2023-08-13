@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Orders {
+public class Orders extends Base {
 
     @Id @GeneratedValue
     @Column(name = "orderId")
