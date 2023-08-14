@@ -1,10 +1,11 @@
 package com.example.cookin.entity;
 
 import com.example.cookin.dto.member.MemberJoinDto;
+import com.example.cookin.dto.member.MemberModifyDto;
 import lombok.*;
 
 import javax.persistence.*;
-
+@ToString
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -18,7 +19,7 @@ public class Member extends Base {
     private Long id;
 
     @Column(unique = true)
-    private String username;// email
+    private String username;// 사번
 
     @Column(nullable = false)
     private String password;
@@ -39,8 +40,10 @@ public class Member extends Base {
     @Column(nullable = false)
     private String memberStatus;
 
-    @Embedded
-    private BizInfo bizInfo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "storeId")
+    private Store store;
+
 
     // 회원가입
     public static Member toJoinMemberEntity(MemberJoinDto memberJoinDto){
@@ -52,9 +55,12 @@ public class Member extends Base {
                 .tel(memberJoinDto.getTel())
                 .role(memberJoinDto.getRole())
                 .memberStatus(memberJoinDto.getMemberStatus())
-                .bizInfo(memberJoinDto.getBizInfo())
                 .build();
     }
 
+    // 정보 수정
+    public void memberUpdate(MemberModifyDto memberModifyDto){
+        this.tel = memberModifyDto.getTel();
+    }
 
 }

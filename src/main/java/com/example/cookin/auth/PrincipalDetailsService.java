@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /*
 *  securityConfig에서 .loginProcessingUrl("/login") 해놨기 때문에
@@ -30,7 +31,7 @@ public class PrincipalDetailsService implements UserDetailsService {
    }
    * */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(@RequestBody String username) throws UsernameNotFoundException {
         log.info("프린시펀 디테일 서비스 username -> {}", username);
         Member member = memberRepository.findByUsername(username);
         log.info("프린시펀 디테일 서비스 아이디 잘 찾아왓나? -> {}",member);

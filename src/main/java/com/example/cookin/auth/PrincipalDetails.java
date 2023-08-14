@@ -31,6 +31,15 @@ public class PrincipalDetails implements UserDetails {
         return collection;
     }
 
+    public Long getMemberId() {
+        return member.getId();
+    }
+
+
+    public String getMemberName(){
+        return member.getName();
+    }
+
     @Override
     public String getPassword() {
         return member.getPassword();
@@ -58,6 +67,6 @@ public class PrincipalDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return true;
     }
 }

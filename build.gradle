@@ -34,6 +34,11 @@ dependencies {
 
     /*sql의 파라미터를 볼 수 있음.*/
     implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
+
+    // 타임리프
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // vaild 사용
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 test {

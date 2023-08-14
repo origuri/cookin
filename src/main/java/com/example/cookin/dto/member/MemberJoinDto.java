@@ -1,7 +1,6 @@
 package com.example.cookin.dto.member;
 
-import com.example.cookin.entity.Base;
-import com.example.cookin.entity.BizInfo;
+import com.example.cookin.entity.Store;
 import lombok.*;
 
 
@@ -12,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 public class MemberJoinDto {
 
+    private Long memberUid;
     private String username;
     private String password;
     private String name;
@@ -20,5 +20,5 @@ public class MemberJoinDto {
     private String tel;
     private String role;
     private String memberStatus;
-    private BizInfo bizInfo;
+    private Store bizInfo;
 }
