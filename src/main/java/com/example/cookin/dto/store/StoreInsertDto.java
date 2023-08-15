@@ -19,4 +19,5 @@ public class StoreInsertDto {
     private String street;
     @NotEmpty(message = "필수값")
     private String zipCode;
+    private String storeStatus;
 }

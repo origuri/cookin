@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface StoreRepository extends JpaRepository<Store, Long> {
-    @Query("SELECT s FROM Store s WHERE s.storeName LIKE %:storeName%")
-    List<Store> findByStoreName(@Param("storeName") String storeName);
+    @Query("SELECT s FROM Store s WHERE s.storeName LIKE %:storeName% AND s.storeStatus = :storeStatus")
+    List<Store> findByStoreName(@Param("storeName") String storeName, @Param("storeStatus") String storeStatus);
+
+    @Query("SELECT s FROM Store s WHERE s.storeStatus = :storeStatus")
+    List<Store> findAllByStoreStatus(@Param("storeStatus") String storeStatus);
 }

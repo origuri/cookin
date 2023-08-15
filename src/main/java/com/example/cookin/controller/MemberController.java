@@ -1,6 +1,7 @@
 package com.example.cookin.controller;
 
 import com.example.cookin.auth.PrincipalDetails;
+import com.example.cookin.dto.member.MemberDeleteDto;
 import com.example.cookin.dto.member.MemberInfoDto;
 import com.example.cookin.dto.member.MemberJoinDto;
 import com.example.cookin.dto.member.MemberModifyDto;
@@ -22,6 +23,7 @@ public class MemberController {
 
     /*
     * 회원 가입
+    * 파라미터 : memberJoinDto
     * */
     @PostMapping("/join")
     public ResponseEntity<?> join(@RequestBody MemberJoinDto memberJoinDto){
@@ -45,12 +47,14 @@ public class MemberController {
 
 
     /*
+    * 회원 정보 수정
     * 수정 후에 react에서 다시 mypage로 되돌림.
+    * 파라미터 : 수정 정보(memberModifyDto), memberUid
     * */
     @PutMapping("/user/mypage/{memberUid}")
     public ResponseEntity<?> memberModifyByMemberDto(@RequestBody MemberModifyDto memberModifyDto,
                                                      @PathVariable("memberUid") Long memberUid
-                                                    // @AuthenticationPrincipal PrincipalDetails principalDetails
+                                                     //@AuthenticationPrincipal PrincipalDetails principalDetails
                                                      ){
         //memberModifyDto.setMemberUid(principalDetails.getMemberId());
         memberModifyDto.setMemberUid(memberUid);
@@ -59,6 +63,23 @@ public class MemberController {
             return new ResponseEntity<>("수정성공햇어용", HttpStatus.OK);
         }else {
             return new ResponseEntity<>("비밀번호 확인하세용", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /*
+    * 회원 탈퇴(퇴사)
+    * 파라미터 : memberUid, password
+    * */
+    @DeleteMapping("/user/mypage/{memberUid}")
+    public ResponseEntity<?> memberRemoveByMemberUid(@PathVariable("memberUid") Long memberUid,
+                                                     @RequestBody MemberDeleteDto memberDeleteDto){
+        int result = memberService.removeMemberByMemberUid(memberUid, memberDeleteDto);
+        if(result == 1) {
+            return new ResponseEntity<>("삭제 성공햇어용", HttpStatus.OK);
+        }else if(result == 2){
+            return new ResponseEntity<>("비밀번호 확인하세용", HttpStatus.BAD_REQUEST);
+        }else{
+            return new ResponseEntity<>("이미 삭제된 회원입니다.", HttpStatus.NOT_FOUND);
         }
     }
 

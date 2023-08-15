@@ -4,11 +4,9 @@ package com.example.cookin.entity;
 import com.example.cookin.dto.store.StoreInsertDto;
 import com.example.cookin.dto.store.StoreUpdateDto;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -32,6 +30,8 @@ public class Store {
     private String street;
     @Column(nullable = false)
     private String zipCode;
+    @Column(nullable = false)
+    private String storeStatus;
 
     public static Store toStoreInsertEntity(StoreInsertDto storeInsertDto){
         return Store.builder()
@@ -41,6 +41,7 @@ public class Store {
                 .city(storeInsertDto.getCity())
                 .street(storeInsertDto.getStreet())
                 .zipCode(storeInsertDto.getZipCode())
+                .storeStatus(storeInsertDto.getStoreStatus())
                 .build();
 
     }
@@ -51,5 +52,6 @@ public class Store {
         this.city = storeUpdateDto.getCity();
         this.street = storeUpdateDto.getStreet();
         this.zipCode = storeUpdateDto.getZipCode();
+        this.storeStatus = storeUpdateDto.getStoreStatus();
     }
 }

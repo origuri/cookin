@@ -19,4 +19,11 @@ public class StoreUpdateDto {
     @NotEmpty(message = "필수값")
     private String zipCode;
 
+    @NotEmpty(message = "필수값")
+    private String password;
+    @NotEmpty(message = "필수값")
+    private Long memberUid;
+
+    private String storeStatus;
+
 }
