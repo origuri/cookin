@@ -1,6 +1,7 @@
 package com.example.cookin.entity;
 
 
+import com.example.cookin.dto.item.ItemInsertDto;
 import com.example.cookin.entity.enums.Status;
 import lombok.*;
 
@@ -33,11 +34,26 @@ public class Item extends Base {
 
     private String notice; // 특이사항 -> 필수아님
 
-    @Enumerated(EnumType.STRING)
-    private Status itemStatus; // 구매가능 여부
-
     @Column(nullable = false)
-    private String category; // 카테고리
+    private String itemStatus; // 구매가능 여부
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoryId")
+    private Category category;
+
+
+    public static Item toInsertItemEntity(ItemInsertDto itemInsertDto){
+        return Item.builder()
+                .name(itemInsertDto.getName())
+                .origin(itemInsertDto.getOrigin())
+                .unit(itemInsertDto.getUnit())
+                .price(itemInsertDto.getPrice())
+                .quantity(itemInsertDto.getQuantity())
+                .notice(itemInsertDto.getNotice())
+                .itemStatus(itemInsertDto.getItemStatus())
+                .category(itemInsertDto.getCategory())
+                .build();
+    }
 
 
 

@@ -32,6 +32,8 @@ public class SecurityConfig {
         http.authorizeRequests()
                 /*.antMatchers("/cookin/**").authenticated()
                 .antMatchers("/user/**").access("hasRole('USER')")
+                .antMatchers("/cookin/store/**").access("hasRole('ADMIN')") // stores는 조회
+                .antMatchers("/cookin/item/**").access("hasRole('ADMIN')")  // items는 조회.
                 .antMatchers("/admin/**").access("hasRole('ADMIN')")*/
                 .anyRequest().permitAll()
                 .and()
