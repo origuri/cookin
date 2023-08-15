@@ -37,6 +37,8 @@ public class Item extends Base {
     @Column(nullable = false)
     private String itemStatus; // 구매가능 여부
 
+    private String keep; // 보관방법
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoryId")
     private Category category;

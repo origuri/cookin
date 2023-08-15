@@ -7,8 +7,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class ItemInsertDto {
-
+public class ItemUpdateDto {
     private String name;
 
     private String origin; // 원산지
@@ -30,5 +29,4 @@ public class ItemInsertDto {
     public Category getCategory() {
         return Category.builder().categoryId(categoryId).build();
     }
-
 }
