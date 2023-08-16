@@ -8,6 +8,9 @@ import lombok.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class ItemUpdateDto {
+
+    private Long itemId;
+
     private String name;
 
     private String origin; // 원산지

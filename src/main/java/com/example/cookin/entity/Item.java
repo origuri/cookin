@@ -2,6 +2,7 @@ package com.example.cookin.entity;
 
 
 import com.example.cookin.dto.item.ItemInsertDto;
+import com.example.cookin.dto.item.ItemUpdateDto;
 import com.example.cookin.entity.enums.Status;
 import lombok.*;
 
@@ -53,10 +54,22 @@ public class Item extends Base {
                 .quantity(itemInsertDto.getQuantity())
                 .notice(itemInsertDto.getNotice())
                 .itemStatus(itemInsertDto.getItemStatus())
+                .keep(itemInsertDto.getKeep())
                 .category(itemInsertDto.getCategory())
                 .build();
     }
 
+    public void toUpdateItemEntity(ItemUpdateDto itemUpdateDto){
+        this.name = itemUpdateDto.getName();
+        this.origin = itemUpdateDto.getOrigin();
+        this.unit = itemUpdateDto.getUnit();
+        this.price = itemUpdateDto.getPrice();
+        this.quantity = itemUpdateDto.getQuantity();
+        this.notice = itemUpdateDto.getNotice();
+        this.itemStatus = itemUpdateDto.getItemStatus();
+        this.keep = itemUpdateDto.getKeep();
+        this.category = itemUpdateDto.getCategory();
+    }
 
 
 

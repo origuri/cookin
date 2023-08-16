@@ -25,6 +25,8 @@ public class ItemDto {
 
     private String itemStatus; // 구매가능 여부
 
+    private Long categoryId;
+
     public static ItemDto toSearchItemDto(Item item){
         return ItemDto.builder()
                 .name(item.getName())
@@ -35,6 +37,7 @@ public class ItemDto {
                 .notice(item.getNotice())
                 .keep(item.getKeep())
                 .itemStatus(item.getItemStatus())
+                .categoryId(item.getCategory().getCategoryId())
                 .build();
     }
 
